@@ -44,7 +44,10 @@ public class Client{
 
       messageInput = input.readLine();
       System.out.println(messageInput);
-      
+
+      input.close();
+      output.close();
+      socket.close();
     }
     catch(ConnectException e){
       System.out.println("Error : can't connect to the server");
