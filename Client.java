@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.io.InputStreamReader;
 import java.net.ConnectException;
+import java.net.SocketException;
 
 
 public class Client{
@@ -27,8 +28,7 @@ public class Client{
 
       String s, messageInput;
 
-      messageInput = input.readLine();
-      System.out.println(messageInput);
+      System.out.println("Connected to the server");
 
       do{
 
@@ -42,8 +42,7 @@ public class Client{
 
       }while(!s.contains("q"));
 
-      messageInput = input.readLine();
-      System.out.println(messageInput);
+      System.out.println("Disconnected to the server");
 
       input.close();
       output.close();
@@ -52,6 +51,9 @@ public class Client{
     catch(ConnectException e){
       System.out.println("Error : can't connect to the server");
       System.exit(1);
+    }
+    catch(SocketException e){
+      System.out.println("Error : disconnected from the server");
     }
     catch(IOException e)
     {
